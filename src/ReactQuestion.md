@@ -29,6 +29,9 @@
 ### Virtual DOM
 + Clone từ DOM thật
 + Sử dụng thuật toán diffing để so sánh vs DOM thật rồi update lên DOM thật, giảm reflow vs repaint -> performent tốt
++ What makes React’s virtual DOM so fast?
+React doesn’t really do anything new. It’s just a strategic move. What it does is It stores a replica of real DOM in memory. When you modify the DOM, it first applies these changes to the in-memory DOM. Then, using it’s diffing algorithm, figures out what has really changed.
+Finally, it batches the changes and call applies them on real-dom in one go. Thus, minimizing the re-flow and re-paint.
 
 ### window.reloaded vs dom.reloaded khác j nhau
 + window là gọi khi cả html,js đc load xong còn dom là khi mới chỉ có html chưa có j
@@ -66,6 +69,7 @@ useEffect(() => {
 + Bài toán thực tế vào ô search text
 
 ## Css:
++ display: none  vs visibility: hidden, 1 thằng mất hẳn còn 1 thằng thì còn lưu lại vị trí
 + Inline: Có set đc width vs height ko: Ko, tự co dãn theo content bên trong vs có thể nằm trên cùng 1 line
 + Block: ko nằm trên cùng 1 dòng, có set đc width height
 + Inline-block: kết hợp 2 thằng trên
