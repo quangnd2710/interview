@@ -1,10 +1,20 @@
 # Tech
+
+## Git:
++ git pull vs git merge
++ cherry pick
+
 ## JS:
 
 ### Các cách xử lý asynchronous
 + async await
 + Promise
 + Callback
++ Có thay thế hết promise = async await được ko, ko vì nhiều case dùng để gọi nhiều request cùng 1 lúc async ko giải quyết đc, phải dùng Promise
+
+### Token thường lưu vào đâu, localStorage và sessionStorage khác nhau điểm nào
++ localStorage ko mất khi đóng tab hay browser, session thì mất.
++ localStorage có lưu lượng nhớ lớn hơn
 
 ### Dùng promise gọi 5 thằng 1 thằng dính lỗi thì ngừng luôn:
 + Promise.race
@@ -17,6 +27,9 @@
 + [] instanceof Array
 
 ## React:
+
+### life cycle, có set đc state trong render vs cả componentdidupdate ko
++ Trong render ko set dc, componentdidupdate base on condional
 
 ### dùng đc component mà ko extends ko
 + React Component thiên về tính đa hình hơn là kế thừa
@@ -57,6 +70,8 @@ useEffect(() => {
   // remove listener when unmount
   return () => window.removeListener('resize')
 });
++ Nếu truyền 1, 2 vào depedencies thì bị ảnh hưởng j, ko, vẫn chỉ gọi 1 lần nhưng bị thừa depedencies
++ Nếu ko có depedencies thì dễ bị infinite loop
 
 ## Redux:
 + Luồng chạy của redux: Thông qua action vào reducer (sẽ có middleware ở giữa) update lên store rồi gen lên view 
@@ -76,8 +91,25 @@ useEffect(() => {
 + Reset css vs nomalize css ( chưa rõ )
 + box-sizing: tính cả padding vs border vào width vs height
 + position absolute vs fixed: Fixed gắn cứng lên page dù có scroll, absolute cần có relative để căn chỉnh
++ flex, order, justify-content, align-items, align-content
++ animation, transittion,
++ các lib có sẵn lợi gì hơn khi viết css thuần
 
 ## Scss
 + styled component có lợi j hơn scss: truyền đc props để custom
 + prop của styled component lúc load lúc ko do j, đã gặp case này bao h chưa: do render quá nhanh hoặc bị render thừa quá nhiều, ko kịp load
 + function dùng trong scss: (chưa rõ)
+
+## Eventloop
++ eventloop hoạt động như thế nào, để làm j
++ ví dụ bài toán:
+const a = function() {
+  console.log('a');
+  setTimeOut(() => {
+    console.log('b');
+  });
+  console.log('c');
+}
+
+a();
+
